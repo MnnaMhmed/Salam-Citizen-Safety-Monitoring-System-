@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Salam_Infrastructure.DBContext;
 
@@ -11,9 +12,11 @@ using Salam_Infrastructure.DBContext;
 namespace Salam_Infrastructure.Migrations
 {
     [DbContext(typeof(SalamDBContext))]
-    partial class SalamDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260816170240_menna3")]
+    partial class menna3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,36 +49,6 @@ namespace Salam_Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Devices");
-                });
-
-            modelBuilder.Entity("Salam_Domain.Entities.EmergencyContact", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Relation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("EmergencyContacts");
                 });
 
             modelBuilder.Entity("Salam_Domain.Entities.Notification", b =>
@@ -258,17 +231,6 @@ namespace Salam_Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Salam_Domain.Entities.EmergencyContact", b =>
-                {
-                    b.HasOne("Salam_Domain.Entities.User", "User")
-                        .WithMany("EmergencyContacts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Salam_Domain.Entities.Notification", b =>
                 {
                     b.HasOne("Salam_Domain.Entities.User", "User")
@@ -318,8 +280,6 @@ namespace Salam_Infrastructure.Migrations
             modelBuilder.Entity("Salam_Domain.Entities.User", b =>
                 {
                     b.Navigation("Devices");
-
-                    b.Navigation("EmergencyContacts");
 
                     b.Navigation("Notifications");
 

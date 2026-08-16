@@ -55,6 +55,57 @@ namespace Salam_Infrastructure.Repositories
             }
         }
 
+        private IGeneric_Repository<Plan> _plan;
+        public IGeneric_Repository<Plan> Plan
+        {
+            get
+            {
+                if (_plan == null)
+                    _plan = new Generic_Repository<Plan>(_context);
+
+                return _plan;
+            }
+        }
+
+
+        private IGeneric_Repository<Subscribtion> _subscribtions;
+        public IGeneric_Repository<Subscribtion> Subscribtions
+        {
+            get
+            {
+                if (_subscribtions == null)
+                    _subscribtions = new Generic_Repository<Subscribtion>(_context);
+
+                return _subscribtions;
+            }
+        }
+
+        private IGeneric_Repository<Notification> _notification;
+        public IGeneric_Repository<Notification> Notifications
+        {
+            get
+            {
+                if (_notification == null)
+                    _notification = new Generic_Repository<Notification>(_context);
+
+                return _notification;
+            }
+        }
+
+        private IGeneric_Repository<EmergencyContact> _emergencycontact;
+        public IGeneric_Repository<EmergencyContact> EmergencyContacts
+        {
+            get
+            {
+                if (_emergencycontact == null)
+                    _emergencycontact = new Generic_Repository<EmergencyContact>(_context);
+
+                return _emergencycontact;
+            }
+        }
+
+
+
         public async Task<int> SaveChangesAsync()
         {
             return await _context.SaveChangesAsync();

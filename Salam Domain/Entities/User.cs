@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,10 @@ namespace Salam_Domain.Entities
 
         public ICollection<Report> Report { get; set; } = new List<Report>();
         public ICollection<Device> Devices { get; set; } = new List<Device>();
+        public ICollection<Subscribtion> Subscribes { get; set; }= new List<Subscribtion>();
+        public ICollection<Notification> Notifications { get; set; }= new List<Notification>();
+        public ICollection<EmergencyContact> EmergencyContacts { get; set; }= new List<EmergencyContact>();
+
         public int NumOfReports { get; set; }
         public int NumOfDevices { get; set; }
 

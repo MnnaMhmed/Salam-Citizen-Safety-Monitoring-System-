@@ -18,6 +18,10 @@ namespace Salam_Infrastructure.DBContext
         public DbSet <User> Users { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Device> Devices { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Plan> Plans { get; set; }
+        public DbSet<Subscribtion> Subscribtions { get; set; }
+        public DbSet<EmergencyContact> EmergencyContacts { get; set; }
          
 
 
