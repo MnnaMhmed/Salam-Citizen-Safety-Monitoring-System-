@@ -7,6 +7,7 @@ using Salam_Application.Services_Interfces;
 using Salam_Domain.Interfaces;
 using Salam_Infrastructure.DBContext;
 using Salam_Infrastructure.Repositories;
+using Salam_Application.Interfaces.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ builder.Services.AddScoped<ISubscribtionService, SubscribtionService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
 builder.Services.AddScoped<IEmergencyNumberService, EmergencyNumberService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 var key = builder.Configuration["Jwt:Key"];
 
