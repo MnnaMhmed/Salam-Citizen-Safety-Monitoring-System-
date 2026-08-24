@@ -25,6 +25,7 @@ namespace Salam_Domain.Entities
         public ICollection<EmergencyContact> EmergencyContacts { get; set; }= new List<EmergencyContact>();
         public ICollection<Support> Supports { get; set; } = new List<Support>();
         public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
+        public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
         public int NumOfReports { get; set; }
         public int NumOfDevices { get; set; }

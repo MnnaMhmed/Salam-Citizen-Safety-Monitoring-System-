@@ -143,6 +143,18 @@ namespace Salam_Infrastructure.Repositories
         }
 
 
+        private IGeneric_Repository<Payment> _payments;
+
+        public IGeneric_Repository<Payment> Payments
+        {
+            get
+            {
+                if (_payments == null)
+                    _payments = new Generic_Repository<Payment>(_context);
+
+                return _payments;
+            }
+        }
 
 
 

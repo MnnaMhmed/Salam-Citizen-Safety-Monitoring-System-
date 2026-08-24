@@ -18,6 +18,7 @@ public bool IsActive { get; set; }
         public int UserId { get; set; }
         public Plan Plan { get; set; }
         public int PlanId { get; set; }
+        public ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
 
     }

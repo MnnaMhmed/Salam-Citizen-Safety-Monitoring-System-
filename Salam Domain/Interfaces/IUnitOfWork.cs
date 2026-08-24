@@ -19,6 +19,7 @@ namespace Salam_Domain.Interfaces
         IGeneric_Repository<EmergencyNumber> EmergencyNumbers { get; }
         IGeneric_Repository<Support> Supports { get; }
         IGeneric_Repository<Rating> Ratings { get; }
+        IGeneric_Repository<Payment> Payment { get; }
         Task<int> SaveChangesAsync();
     }
 }

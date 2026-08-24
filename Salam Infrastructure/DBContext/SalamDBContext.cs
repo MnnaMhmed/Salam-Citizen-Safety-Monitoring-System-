@@ -24,6 +24,7 @@ namespace Salam_Infrastructure.DBContext
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<EmergencyNumber> EmergencyNumbers { get; set; }
         public DbSet<Support> Supports { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
 
 

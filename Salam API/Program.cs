@@ -32,6 +32,7 @@ builder.Services.AddScoped<IEmergencyNumberService, EmergencyNumberService>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<ISupportService, SupportService>();
 builder.Services.AddScoped<IRatingService, RatingService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 var key = builder.Configuration["Jwt:Key"];
 
 builder.Services.AddAuthentication(options =>
