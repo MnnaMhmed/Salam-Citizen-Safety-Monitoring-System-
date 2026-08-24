@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Salam_Application.DTOs;
 using Salam_Application.Services_Interfces;
 using Salam_Domain.Entities;
 
@@ -18,19 +19,19 @@ namespace Salam_API.Controllers
         [HttpGet ("GetAllUserConatcts")]
         public async Task <IActionResult> GetAllUserContacts (int Userid)
         {
-            var contacts= await _emergencyContactsService.GetAllUserContacts(Userid);
-            return Ok(contacts);
+            var contact= await _emergencyContactsService.GetAllUserContacts(Userid);
+            return Ok(contact);
 
         }
         [HttpPost ("AddContact")]
-        public async Task<IActionResult> AddContact(EmergencyContact econtact)
+        public async Task<IActionResult> AddContact(int userid,EmergencyContactDto econtactdto)
         {
-            if (econtact == null)
+            if (econtactdto == null)
                 return BadRequest("Please Enter All Contact Data");
-
-            var contacts =  _emergencyContactsService.AddContact(econtact);
+            await _emergencyContactsService.AddContact(userid, econtactdto);
             return Ok("Contact added Successfully");
         }
+        [HttpDelete("Delete Contact")]
 
         public async Task<IActionResult> DeleteContatc(int eid)
         {
@@ -39,7 +40,9 @@ namespace Salam_API.Controllers
               await  _emergencyContactsService.DeleteContact(eid);
             return Ok("Contact Deleted Successfully");
         }
-        public async Task<IActionResult> UpdateContatc(int eid , int userid, EmergencyContact updatedContact)
+        [HttpPut("Update Contact")]
+
+        public async Task<IActionResult> UpdateContatc(int eid , int userid, EmergencyContactDto updatedContact)
         {
         
 

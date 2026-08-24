@@ -27,6 +27,7 @@ builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<ISubscribtionService, SubscribtionService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IEmergencyContactsService, EmergencyContactsService>();
+builder.Services.AddScoped<IEmergencyNumberService, EmergencyNumberService>();
 
 var key = builder.Configuration["Jwt:Key"];
 

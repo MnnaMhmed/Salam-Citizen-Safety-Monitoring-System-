@@ -105,6 +105,20 @@ namespace Salam_Infrastructure.Repositories
         }
 
 
+        private IGeneric_Repository<EmergencyNumber> _emergencynumber;
+        public IGeneric_Repository<EmergencyNumber> EmergencyNumbers
+        {
+            get
+            {
+                if (_emergencynumber == null)
+                    _emergencynumber = new Generic_Repository<EmergencyNumber>(_context);
+
+                return _emergencynumber;
+            }
+        }
+
+
+
 
         public async Task<int> SaveChangesAsync()
         {

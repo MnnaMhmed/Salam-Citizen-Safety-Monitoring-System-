@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Salam_Application.Services_Interfces;
+using Salam_Application.DTOs;
 using Salam_Domain.Entities;
 using Salam_Domain.Interfaces;
 
@@ -18,26 +19,37 @@ namespace Salam_Application.Services
         {
             _unitOfWork = unitOfWork;  
         }
-        async Task<List<EmergencyContact>> IEmergencyContactsService.GetAllUserContacts(int userid)
+        async Task<List<EmergencyContactDto>> IEmergencyContactsService.GetAllUserContacts(int userid)
         {
             var user= await _unitOfWork.Users.GetByIdAsync(userid);
             if (user==null)
-                return new List<EmergencyContact>();
+                return new List<EmergencyContactDto>();
 
             var econtact = await _unitOfWork.EmergencyContacts.GetAllAsync();
-            return (econtact.Where(e => e.UserId == userid).ToList());
+
+            return econtact
+                .Where(e => e.UserId == userid)
+                .Select(e => new EmergencyContactDto
+                {
+                    Name = e.Name,
+                    Phone = e.Phone,
+                    Relation = e.Relation
+                })
+                .ToList();
         }
-        async Task IEmergencyContactsService.AddContact(EmergencyContact econtact)
+        async Task IEmergencyContactsService.AddContact(int userid,EmergencyContactDto econtactDto)
         {
-            if (econtact == null)
+            var user=await _unitOfWork.Users.GetByIdAsync(userid);
+            if (user == null)
+                return;
+            if (econtactDto == null)
                 return;
             var contact = new EmergencyContact
             {
-                Id = econtact.Id,
-                Name = econtact.Name,
-                Phone = econtact.Phone,
-                Relation = econtact.Relation,
-                UserId = econtact.UserId,
+                Name = econtactDto.Name,
+                Phone = econtactDto.Phone,
+                Relation = econtactDto.Relation,
+                UserId = userid,
 
             };
             
@@ -59,14 +71,13 @@ namespace Salam_Application.Services
 
 
 
-        async Task<string> IEmergencyContactsService.UpdateContact(int  contactid, EmergencyContact updatedcontact , int userid)
+        async Task<string> IEmergencyContactsService.UpdateContact(int  contactid, EmergencyContactDto updatedcontact , int userid)
         {
             var contact = await _unitOfWork.EmergencyContacts.GetByIdAsync(contactid);
             if (contact == null)
                 return "This Contact Doesnot Exist";
             if (userid == contact.UserId)
             {
-                contact.Id = updatedcontact.Id;
                 contact.Name = updatedcontact.Name;
                 contact.Phone = updatedcontact.Phone;
                 contact.Relation = updatedcontact.Relation;

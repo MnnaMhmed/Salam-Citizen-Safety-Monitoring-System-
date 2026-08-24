@@ -22,7 +22,7 @@ namespace Salam_Infrastructure.DBContext
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Subscribtion> Subscribtions { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
-         
+        public DbSet<EmergencyNumber> EmergencyNumbers { get; set; }
 
 
 
