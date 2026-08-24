@@ -118,8 +118,33 @@ namespace Salam_Infrastructure.Repositories
             }
         }
 
+        private IGeneric_Repository<Support> _support;
+        public IGeneric_Repository<Support> Supports
+        {
+            get
+            {
+                if (_support == null)
+                    _support = new Generic_Repository<Support>(_context);
 
-   
+                return _support;
+            }
+        }
+
+        private IGeneric_Repository<Rating> _rating;
+        public IGeneric_Repository<Rating> Ratings
+        {
+            get
+            {
+                if (_rating == null)
+                    _rating = new Generic_Repository<Rating>(_context);
+
+                return _rating;
+            }
+        }
+
+
+
+
 
         public async Task<int> SaveChangesAsync()
         {

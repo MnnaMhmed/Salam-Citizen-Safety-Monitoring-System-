@@ -23,6 +23,8 @@ namespace Salam_Domain.Entities
         public ICollection<Subscribtion> Subscribes { get; set; }= new List<Subscribtion>();
         public ICollection<Notification> Notifications { get; set; }= new List<Notification>();
         public ICollection<EmergencyContact> EmergencyContacts { get; set; }= new List<EmergencyContact>();
+        public ICollection<Support> Supports { get; set; } = new List<Support>();
+        public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
 
         public int NumOfReports { get; set; }
         public int NumOfDevices { get; set; }

@@ -17,6 +17,8 @@ namespace Salam_Domain.Interfaces
         IGeneric_Repository<Notification> Notifications { get; }
         IGeneric_Repository<EmergencyContact> EmergencyContacts { get; }
         IGeneric_Repository<EmergencyNumber> EmergencyNumbers { get; }
+        IGeneric_Repository<Support> Supports { get; }
+        IGeneric_Repository<Rating> Ratings { get; }
         Task<int> SaveChangesAsync();
     }
 }
