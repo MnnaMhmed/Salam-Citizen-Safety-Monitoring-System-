@@ -1,3 +1,4 @@
+
 # 🛡️ Salam — Safety & Emergency Response API
 
 **Salam** is a safety-focused RESTful API designed to provide users with essential emergency and safety services through a secure and scalable backend system.
@@ -14,17 +15,17 @@ Salam provides a centralized backend for managing safety-related services and us
 
 The system allows authenticated users to:
 
-* Register and log in securely.
-* Create and manage emergency reports.
-* Manage registered safety devices.
-* Manage emergency contacts.
-* Receive and manage notifications.
-* Access emergency numbers and safety information.
-* Manage their profile.
-* Submit support requests and ratings.
-* Browse subscription plans.
-* Subscribe to available plans.
-* Manage subscription-related payments.
+- Register and log in securely.
+- Create and manage emergency reports.
+- Manage registered safety devices.
+- Manage emergency contacts.
+- Receive and manage notifications.
+- Access emergency numbers and safety information.
+- Manage their profile.
+- Submit support requests and ratings.
+- Browse subscription plans.
+- Subscribe to available plans.
+- Manage subscription-related payments.
 
 The system also provides administrative capabilities through **role-based authorization**.
 
@@ -34,43 +35,43 @@ The system also provides administrative capabilities through **role-based author
 
 ### 🔐 Authentication & Authorization
 
-* User Registration
-* User Login
-* JWT Bearer Authentication
-* Role-Based Authorization
-* Protected API endpoints
-* Admin-only operations
-* User ownership validation
+- User Registration
+- User Login
+- JWT Bearer Authentication
+- Role-Based Authorization
+- Protected API endpoints
+- Admin-only operations
+- User ownership validation
 
 ### 🚨 Emergency Reports
 
-* Create emergency reports
-* Retrieve reports
-* View report history
-* Track report status
-* Mark reports as resolved
+- Create emergency reports
+- Retrieve reports
+- View report history
+- Track report status
+- Mark reports as resolved
 
 ### 📱 Devices Management
 
-* Register safety devices
-* View user devices
-* Manage registered devices
-* Associate devices with authenticated users
+- Register safety devices
+- View user devices
+- Manage registered devices
+- Associate devices with authenticated users
 
 ### 🔔 Notifications
 
-* Create notifications
-* Retrieve user notifications
-* Mark notifications as read
-* Delete notifications
-* Real-time notification delivery using SignalR
+- Create notifications
+- Retrieve user notifications
+- Mark notifications as read
+- Delete notifications
+- Real-time notification delivery using SignalR
 
 ### 👥 Emergency Contacts
 
-* Add emergency contacts
-* Retrieve emergency contacts
-* Delete emergency contacts
-* Associate contacts with users
+- Add emergency contacts
+- Retrieve emergency contacts
+- Delete emergency contacts
+- Associate contacts with users
 
 ### 📞 Emergency Numbers
 
@@ -80,38 +81,38 @@ The system also provides administrative capabilities through **role-based author
 
 ### 👤 User Profile
 
-* View profile
-* Update profile information
-* Manage user-related information
+- View profile
+- Update profile information
+- Manage user-related information
 
 ### ⭐ Support & Rating
 
-* Submit support requests
-* Track support request status
-* Submit ratings and comments
+- Submit support requests
+- Track support request status
+- Submit ratings and comments
 
 ### 💳 Plans & Subscriptions
 
-* Retrieve available subscription plans
-* Subscribe to a plan
-* Manage user subscriptions
-* Track subscription status
-* Handle subscription duration
+- Retrieve available subscription plans
+- Subscribe to a plan
+- Manage user subscriptions
+- Track subscription status
+- Handle subscription duration
 
 ### 💰 Payments
 
-* Create payment records
-* Associate payments with subscriptions
-* Track payment status
-* Store transaction information
-* Support different payment methods
+- Create payment records
+- Associate payments with subscriptions
+- Track payment status
+- Store transaction information
+- Support different payment methods
 
 ### 📡 Real-Time Communication
 
-* SignalR integration
-* Real-time notifications
-* Server-to-client communication
-* Reduced dependency on continuous polling
+- SignalR integration
+- Real-time notifications
+- Server-to-client communication
+- Reduced dependency on continuous polling
 
 ---
 
@@ -144,12 +145,12 @@ Salam follows **Clean Architecture** and is divided into four main layers:
                        │
                        │
 ┌──────────────────────┴──────────────────────┐
-│            Salam Infrastructure              │
+│           Salam Infrastructure              │
 │                                             │
-│ EF Core • DbContext • Repositories           │
+│ EF Core • DbContext • Repositories          │
 │ Unit of Work • Configurations • Database    │
 └─────────────────────────────────────────────┘
-```
+````
 
 ### Salam API
 
@@ -241,13 +242,9 @@ EmergencyNumbers
 | Subscriptions → Payments  | One-to-Many |
 | Users → Payments          | One-to-Many |
 
-### ERD
-
-Add the generated database ERD image here:
 ### Database ERD
 
-![Salam Database ERD](database/Salam_Database_ERD.png)
-```
+![Salam Database ERD](docs/database/Salam_Database_ERD.png)
 
 > `__EFMigrationsHistory` is an Entity Framework internal table and is not considered part of the application's business domain.
 
@@ -333,12 +330,6 @@ Swagger will automatically include the JWT token in authorized requests.
 
 ---
 
-
-# 🔑 Swagger / OpenAPI
-
-Salam provides interactive API documentation and testing through Swagger / OpenAPI.
-
-![Salam Swagger API](docs/Swagger.png)
 # 📋 API Modules
 
 The API is organized into several functional modules.
@@ -359,7 +350,7 @@ The API is organized into several functional modules.
 | Support            | `SupportController`          | Support requests            |
 | Rating             | `RatingController`           | User ratings & comments     |
 
-> `*` Authentication requirements depend on the endpoint implementation.
+> **Note:** Authentication and authorization requirements depend on the endpoint implementation.
 
 ---
 
@@ -380,7 +371,7 @@ SignalR allows the server to push notifications to connected clients without req
                            │
                            ▼
                     ┌──────────────┐
-                    │ Salam Hub    │
+                    │  Salam Hub   │
                     └──────┬───────┘
                            │
                            ▼
@@ -399,7 +390,7 @@ This can be used for real-time notification delivery and other safety-related ev
 
 # 🗃️ Repository & Unit of Work
 
-Database access is separated from application business logic using:
+Database access is separated from application business logic using the **Repository Pattern** and **Unit of Work Pattern**.
 
 ### Generic Repository
 
@@ -543,9 +534,7 @@ The following screenshots demonstrate the Salam RESTful API documentation and av
 
 ![API Endpoints](docs/swagger/Screenshot%202026-08-25%20182943.png)
 
-![API Endpoints](docs/swagger/Screenshot%202026-08-25%20182935.png)
-
-![API Endpoints](docs/swagger/Screenshot%202026-08-25%20182927.png)
+---
 
 # ⚙️ Getting Started
 
@@ -648,6 +637,28 @@ Salam
 │   ├── UnitOfWork
 │   └── Repositories
 │
+├── docs
+│   ├── database
+│   │   └── Salam_Database_ERD.png
+│   │
+│   ├── architecture
+│   │   ├── Screenshot 2026-08-25 183533.png
+│   │   ├── Screenshot 2026-08-25 183514.png
+│   │   ├── Screenshot 2026-08-25 183459.png
+│   │   ├── Screenshot 2026-08-25 183439.png
+│   │   ├── Screenshot 2026-08-25 183418.png
+│   │   └── Screenshot 2026-08-25 183032.png
+│   │
+│   └── swagger
+│       ├── Screenshot 2026-08-25 183024.png
+│       ├── Screenshot 2026-08-25 183012.png
+│       ├── Screenshot 2026-08-25 183004.png
+│       ├── Screenshot 2026-08-25 182958.png
+│       ├── Screenshot 2026-08-25 182952.png
+│       ├── Screenshot 2026-08-25 182943.png
+│       ├── Screenshot 2026-08-25 182935.png
+│       └── Screenshot 2026-08-25 182927.png
+│
 ├── .gitignore
 ├── README.md
 └── ...
@@ -657,27 +668,27 @@ Salam
 
 # 🛠️ Technologies & Tools
 
-| Technology              | Purpose                               |
-| ----------------------- | ------------------------------------- |
-| C#                      | Programming Language                  |
-| ASP.NET Core 8          | Web API Framework                     |
-| Entity Framework Core 8 | ORM                                   |
-| SQL Server              | Database                              |
-| LINQ                    | Data Querying                         |
-| JWT                     | Authentication                        |
-| SignalR                 | Real-Time Communication               |
-| Swagger / OpenAPI       | API Documentation & Testing           |
-| Clean Architecture      | Application Architecture              |
-| Dependency Injection    | Dependency Management                 |
-| DTOs                    | API Data Transfer                     |
-| Generic Repository      | Data Access Abstraction               |
-| Unit of Work            | Transaction / Repository Coordination |
+| Technology              | Purpose                     |
+| ----------------------- | --------------------------- |
+| C#                      | Programming Language        |
+| ASP.NET Core 8          | Web API Framework           |
+| Entity Framework Core 8 | ORM                         |
+| SQL Server              | Database                    |
+| LINQ                    | Data Querying               |
+| JWT                     | Authentication              |
+| SignalR                 | Real-Time Communication     |
+| Swagger / OpenAPI       | API Documentation & Testing |
+| Clean Architecture      | Application Architecture    |
+| Dependency Injection    | Dependency Management       |
+| DTOs                    | API Data Transfer           |
+| Generic Repository      | Data Access Abstraction     |
+| Unit of Work            | Repository Coordination     |
 
 ---
 
 # 📌 Project Status
 
-### Current Status: Backend Core Completed
+### Current Status: Backend Core Completed & Tested
 
 The core backend functionality has been implemented and tested through Swagger.
 
@@ -754,3 +765,7 @@ Possible future enhancements include:
 This project is currently intended for educational and portfolio purposes.
 
 If the project is released under a specific open-source license, add the appropriate license information here.
+
+````
+
+
