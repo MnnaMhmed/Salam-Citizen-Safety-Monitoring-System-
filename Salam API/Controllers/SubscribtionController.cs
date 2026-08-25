@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Salam_Application.Services;
 using Salam_Application.Services_Interfces;
@@ -6,6 +7,8 @@ namespace Salam_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+    [Authorize]
     public class SubscribtionController : ControllerBase
     {
         private readonly ISubscribtionService _subscribtionService;
@@ -13,6 +16,7 @@ namespace Salam_API.Controllers
         {
             _subscribtionService = subscribtionService;
         }
+
 
         [HttpGet("GetAllPlans")]
         public async Task<IActionResult> ShowAllPlans()

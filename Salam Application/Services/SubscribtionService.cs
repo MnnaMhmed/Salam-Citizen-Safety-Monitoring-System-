@@ -20,7 +20,7 @@ namespace Salam_Application.Services
      async   Task<List<Plan>> ISubscribtionService.GetAllPlans()
         {
 
-            var plans= await _unitOfWork.Plan.GetAllAsync();
+            var plans= await _unitOfWork.Plans.GetAllAsync();
             return (plans.ToList());
         }
 
@@ -67,7 +67,7 @@ namespace Salam_Application.Services
             if (user == null)
                 return ("User Not Found");
 
-            var plan = await _unitOfWork.Plan.GetByIdAsync(planId);
+            var plan = await _unitOfWork.Plans.GetByIdAsync(planId);
             if (plan == null)
                 return ("There is no Plan like This -_-");
 
@@ -75,7 +75,7 @@ namespace Salam_Application.Services
             {
 
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays (plan.DurationInDays),
+                EndDate = DateTime.Now.AddDays (plan.Duration),
                 IsActive = true,
                 UserId = userId,
                 PlanId = planId

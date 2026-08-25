@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace Salam_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class RatingController : ControllerBase
     {
         private readonly IRatingService _ratingService;
@@ -62,6 +64,7 @@ namespace Salam_API.Controllers
         }
 
         [HttpGet]
+        [Authorize (Roles ="Admin")]
         public async Task<IActionResult> GetAllRatings()
         {
             var result = await _ratingService

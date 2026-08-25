@@ -9,6 +9,7 @@ namespace Salam_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ReportController : ControllerBase
     {
         private readonly IReportService _reportService;
@@ -19,7 +20,7 @@ namespace Salam_API.Controllers
             
         }
 
-
+        [Authorize (Roles =("Admin"))]
         [HttpGet("GetAllReports")]
         public async Task<IActionResult> GetAllReports()
         {

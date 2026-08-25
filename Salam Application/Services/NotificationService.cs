@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Salam_Application.DTOs;
+using Salam_Application.Interfaces.Services;
 using Salam_Application.Services_Interfces;
 using Salam_Domain.Entities;
 using Salam_Domain.Interfaces;
@@ -15,9 +16,11 @@ namespace Salam_Application.Services
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        public NotificationService( IUnitOfWork unitOfWork)
+        private readonly INotificationSender _notificationSender;
+        public NotificationService( IUnitOfWork unitOfWork, INotificationSender notificationSender )
         {
             _unitOfWork=unitOfWork;
+            _notificationSender=notificationSender;
         }
         async Task<string> INotificationService.CreateNotification(NotificationDto ndto, int userid)
         {
@@ -35,7 +38,10 @@ namespace Salam_Application.Services
                 };
            await _unitOfWork.Notifications.AddAsync(not);
             await _unitOfWork.SaveChangesAsync();
-                return "Notification Created Successfully";
+            await _notificationSender.SendNotificationAsync(
+    not.UserId,
+    not.Content);
+            return "Notification Created Successfully";
                 
 
             

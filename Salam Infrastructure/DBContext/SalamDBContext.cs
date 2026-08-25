@@ -26,7 +26,22 @@ namespace Salam_Infrastructure.DBContext
         public DbSet<Support> Supports { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Payment>()
+                .HasOne(p => p.User)
+                .WithMany(u => u.Payments)
+                .HasForeignKey(p => p.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Payment>()
+                .HasOne(p => p.Subscription)
+                .WithMany(s => s.Payments)
+                .HasForeignKey(p => p.SubscriptionId)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
 
     }
 }

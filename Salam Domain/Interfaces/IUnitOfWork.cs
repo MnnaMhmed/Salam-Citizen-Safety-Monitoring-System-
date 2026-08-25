@@ -12,7 +12,7 @@ namespace Salam_Domain.Interfaces
         IGeneric_Repository<User> Users { get; }
         IGeneric_Repository<Report> Reports { get; }
         IGeneric_Repository<Device> Devices { get; }
-        IGeneric_Repository<Plan> Plan { get; }
+        IGeneric_Repository<Plan> Plans { get; }
         IGeneric_Repository<Subscribtion> Subscribtions { get; }
         IGeneric_Repository<Notification> Notifications { get; }
         IGeneric_Repository<EmergencyContact> EmergencyContacts { get; }

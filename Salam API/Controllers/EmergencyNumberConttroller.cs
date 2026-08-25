@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Salam_Application.DTOs;
 using Salam_Application.Services_Interfces;
 
@@ -6,6 +7,7 @@ namespace Salam_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmergencyNumberController : ControllerBase
     {
         private readonly IEmergencyNumberService _emergencyNumberService;

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Salam_Application.Services_Interfces
+namespace Salam_Application.Interfaces.Services
 {
-    internal class INotificationSender
+    public interface INotificationSender
     {
+        Task SendNotificationAsync(int userId, string message);
     }
 }

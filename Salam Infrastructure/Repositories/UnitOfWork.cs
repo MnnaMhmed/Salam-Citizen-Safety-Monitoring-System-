@@ -57,7 +57,7 @@ namespace Salam_Infrastructure.Repositories
         }
 
         private IGeneric_Repository<Plan> _plan;
-        public IGeneric_Repository<Plan> Plan
+        public IGeneric_Repository<Plan> Plans
         {
             get
             {
@@ -145,7 +145,7 @@ namespace Salam_Infrastructure.Repositories
 
         private IGeneric_Repository<Payment> _payments;
 
-        public IGeneric_Repository<Payment> Payments
+        public IGeneric_Repository<Payment> Payment
         {
             get
             {

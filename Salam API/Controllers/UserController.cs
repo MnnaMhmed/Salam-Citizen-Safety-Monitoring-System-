@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Salam_Application.DTOs;
@@ -10,6 +11,8 @@ namespace Salam_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
+    [Authorize(Roles = "Admin")]
 
     public class UserController : ControllerBase
     {
@@ -23,6 +26,7 @@ namespace Salam_API.Controllers
 
 
         [HttpGet("Get_Users")]
+
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await userService.GetAllUsersAsync();

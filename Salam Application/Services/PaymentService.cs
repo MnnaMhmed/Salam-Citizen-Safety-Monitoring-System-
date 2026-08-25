@@ -39,7 +39,7 @@ namespace Salam_Application.Services
                 return null;
             }
 
-            var plan = await _unitOfWork.Plan
+            var plan = await _unitOfWork.Plans
                 .GetByIdAsync(subscription.PlanId);
 
             if (plan == null)
@@ -58,7 +58,7 @@ namespace Salam_Application.Services
                 CreatedAt = DateTime.UtcNow
             };
 
-            await _unitOfWork.Payments.AddAsync(payment);
+            await _unitOfWork.Payment.AddAsync(payment);
 
             await _unitOfWork.SaveChangesAsync();
 
